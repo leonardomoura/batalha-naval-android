@@ -1,6 +1,7 @@
 package univali.m3;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 public class main_activity extends Activity {
@@ -8,6 +9,7 @@ public class main_activity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        Intent intent = new Intent(main_activity.this, MenuActivity.class);
+		startActivity(intent);
     }
 }
