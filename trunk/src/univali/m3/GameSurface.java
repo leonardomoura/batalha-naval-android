@@ -75,9 +75,9 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         p.setColor(Color.WHITE);
 
         for(int i=0; i<3; i++){
-        	canvas.drawText("B", myships[i].x*canvas.getWidth()/3, 
+        	canvas.drawText(myships[i].className, myships[i].x*canvas.getWidth()/3, 
         			myships[i].y*canvas.getHeight()/6+canvas.getHeight()/2, p);
-        	canvas.drawText("B", theirships[i].x*canvas.getWidth()/3, 
+        	canvas.drawText(theirships[i].className, theirships[i].x*canvas.getWidth()/3, 
         			theirships[i].y*canvas.getHeight()/6, p);
         	
         }
