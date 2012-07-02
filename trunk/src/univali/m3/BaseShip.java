@@ -8,10 +8,12 @@ public class BaseShip {
 	public Boolean isAlive;
 	public Boolean hit;
 	public String className;
+	public int length;
 	
 	public BaseShip() {
 		x = 0;
 		y = 0;
+		length = 1;
 		isAlive = true;
 		hit = false;
 		className = "";

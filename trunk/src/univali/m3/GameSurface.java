@@ -13,8 +13,8 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 	Boolean running = false;
 	Thread gamethread;
 	
-	public BaseShip[] myships = new BaseShip[3];
-	public BaseShip[] theirships = new BaseShip[3];
+	public BaseShip[] myships = new BaseShip[3+2+3];
+	public BaseShip[] theirships = new BaseShip[3+2+3];
 	
 	
 	public GameSurface(Context context) {
@@ -75,10 +75,10 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         p.setColor(Color.WHITE);
 
         for(int i=0; i<3; i++){
-        	canvas.drawText(myships[i].className, myships[i].x*canvas.getWidth()/3, 
-        			myships[i].y*canvas.getHeight()/6+canvas.getHeight()/2, p);
-        	canvas.drawText(theirships[i].className, theirships[i].x*canvas.getWidth()/3, 
-        			theirships[i].y*canvas.getHeight()/6, p);
+        	canvas.drawText(myships[i].className, myships[i].x*canvas.getWidth()/6+10, 
+        			myships[i].y*canvas.getHeight()/6+canvas.getHeight()/2+20, p);
+        	canvas.drawText(theirships[i].className, theirships[i].x*canvas.getWidth()/6+10, 
+        			theirships[i].y*canvas.getHeight()/6+20, p);
         	
         }
         
@@ -93,8 +93,11 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         p.setColor(Color.WHITE);
         canvas.drawLine(0, canvas.getHeight()/6*4, canvas.getWidth(), canvas.getHeight()/6*4, p);
         canvas.drawLine(0, canvas.getHeight()/6*5, canvas.getWidth(), canvas.getHeight()/6*5, p);
-        canvas.drawLine(canvas.getWidth()/3, 0, canvas.getWidth()/3, canvas.getHeight(), p);
-        canvas.drawLine(canvas.getWidth()/3*2, 0, canvas.getWidth()/3*2, canvas.getHeight(), p);
+        canvas.drawLine(canvas.getWidth()/6, 0, canvas.getWidth()/6, canvas.getHeight(), p);
+        canvas.drawLine(canvas.getWidth()/6*2, 0, canvas.getWidth()/6*2, canvas.getHeight(), p);
+        canvas.drawLine(canvas.getWidth()/2, 0, canvas.getWidth()/2, canvas.getHeight(), p);
+        canvas.drawLine(canvas.getWidth()/6*4, 0, canvas.getWidth()/6*4, canvas.getHeight(), p);
+        canvas.drawLine(canvas.getWidth()/6*5, 0, canvas.getWidth()/6*5, canvas.getHeight(), p);
     }
 	
 	@Override
