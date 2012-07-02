@@ -46,6 +46,10 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 		};
 	}
 	
+	protected void Update(){
+	
+	}
+	
 	@Override
 	protected void onDraw(Canvas canvas) {
 		
@@ -53,10 +57,20 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 //        canvas.drawBitmap(bmp, 10, 10, null);
         canvas.drawColor(Color.BLUE);
         Paint p = new Paint();
-        p.setColor(Color.RED);
-        p.setAlpha(1);
-        p.setStyle(Style.FILL);
-        canvas.drawRect(new Rect(0, 0, 100, 100), p);
+        p.setColor(Color.WHITE);
+        
+//        p.setAlpha(1);
+        p.setStyle(Style.FILL);       
+        p.setStyle(Style.STROKE);
+        canvas.drawLine(0, canvas.getHeight()/3, canvas.getWidth(), canvas.getHeight()/3, p);
+        canvas.drawLine(0, canvas.getHeight()/3*2, canvas.getWidth(), canvas.getHeight()/3*2, p);
+        canvas.drawLine(canvas.getWidth()/6, 0, canvas.getWidth()/6, canvas.getHeight(), p);
+        canvas.drawLine(canvas.getWidth()/6*2, 0, canvas.getWidth()/6*2, canvas.getHeight(), p);
+        p.setColor(Color.BLACK);
+        canvas.drawLine(canvas.getWidth()/3, 0, canvas.getWidth()/3, canvas.getHeight(), p);
+        p.setColor(Color.WHITE);
+        canvas.drawLine(canvas.getWidth()/6*4, 0, canvas.getWidth()/6*4, canvas.getHeight(), p);
+        canvas.drawLine(canvas.getWidth()/6*5, 0, canvas.getWidth()/6*5, canvas.getHeight(), p);
     }
 	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
