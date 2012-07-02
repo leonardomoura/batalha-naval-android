@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.36" >
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"  >
+        </ListView>
+
+        <ImageButton
+            android:id="@+id/btrefresh" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/listView1" 
+            android:src="@android:drawable/ic_popup_sync" />
+
+        <Button
+            android:id="@+id/btcreate" 
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_alignLeft="@+id/btrefresh"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/btrefresh" 
+            android:text="Create Game" />
+    </RelativeLayout>
+
+</LinearLayout>
