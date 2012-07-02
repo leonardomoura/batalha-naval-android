@@ -4,5 +4,6 @@ public class BoatShip extends BaseShip {
 	public BoatShip() {
 		super();
 		className = "B";
+		length = 1;
 	}
 }
