@@ -4,10 +4,11 @@ import java.io.IOException;
 import java.util.Set;
 import java.util.UUID;
 
+import univali.m3.R;
+
 import communication.Message;
 import communication.bluethooth.Connection;
  
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
