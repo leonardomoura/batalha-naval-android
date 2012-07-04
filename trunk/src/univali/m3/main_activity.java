@@ -11,5 +11,6 @@ public class main_activity extends Activity {
         super.onCreate(savedInstanceState);
         Intent intent = new Intent(main_activity.this, MenuActivity.class);
 		startActivity(intent);
+		finish();
     }
 }
