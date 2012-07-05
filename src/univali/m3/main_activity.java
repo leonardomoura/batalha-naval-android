@@ -1,5 +1,6 @@
 package univali.m3;
 
+import classesExemplos.BluethoothActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

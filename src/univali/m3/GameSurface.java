@@ -12,6 +12,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
+import android.graphics.Point;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -30,9 +31,13 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 	float mouseY = 0;
 	
 	int gridOffsetX = 23;
-	int gridOffsetY = 23;
-	int gridCellWidth = 42;
-	int gridCellHeight = 42;
+	int gridOffsetY = 21;
+	int gridCellWidth = 45;
+	int gridCellHeight = 41;
+	
+	ArrayList<Point> ataque = new ArrayList<Point>();
+	
+	boolean isMyTurn;
 
 	// isso vai ser muito gambiarristico
 	int cliques;
@@ -161,7 +166,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 	public void didTouch(MotionEvent e) {
 		click = false;
 		for (BaseShip s : myships) {
-			click = s.WasClicked((int) e.getRawX(), (int) e.getRawY());
+			click = s.WasClicked((int) e.getX(), (int) e.getY());
 			if (click && s.canSelect) {
 				selectedShip = s;
 				break;
@@ -171,23 +176,28 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 		}
 		//if not click and selectedShip!=null means player is eligible to select a position to put the ship
 		if(!click && selectedShip!=null){
-			if(e.getRawX()>gridOffsetX && e.getRawY()>gridOffsetY
-					&& e.getRawX()<grid.getWidth() && e.getRawY()<grid.getHeight()){
-				int tx=(int) (e.getRawX()-gridOffsetX)/gridCellWidth;
-				int ty=(int) (e.getRawY()-gridOffsetY)/gridCellHeight;
+			if(e.getX()<grid.getWidth() && e.getY()<grid.getHeight()){
+				int tx=(int) (e.getX()-gridOffsetX)/gridCellWidth;
+				int ty=(int) (e.getY()-gridOffsetY)/gridCellHeight;
 			
 				System.out.println("tx "+tx+" ty "+ty);
 				
 				selectedShip.canSelect=false;
-				selectedShip.x = tx*gridCellWidth+gridOffsetX/2;
-				selectedShip.y = ty*gridCellHeight+gridOffsetY/2;
+				selectedShip.x = (tx*gridCellWidth)+gridOffsetX;
+				selectedShip.y = (ty*gridCellHeight)+gridOffsetY;
 				click = false;
 				
 				selectedShip=null;
 			}
+		}else{
+			if(!click && selectedShip==null){
+				if(e.getY()>grid.getHeight()){
+					int ty = (int) (e.getY()-grid.getHeight());
+				}
+			}
 		}
 //		for (BaseShip s : theirships) {
-//			click = s.WasClicked((int) e.getRawX(), (int) e.getRawY());
+//			click = s.WasClicked((int) e.getX(), (int) e.getY());
 //			if (click) {
 //
 //				break;
