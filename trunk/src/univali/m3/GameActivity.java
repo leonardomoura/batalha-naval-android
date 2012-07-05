@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 
 public class GameActivity extends Activity {
