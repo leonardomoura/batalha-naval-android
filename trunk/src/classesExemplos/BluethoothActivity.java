@@ -33,7 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class BluethoothActivity extends Activity {
-    public static final String NAME = "Crazy Soccer";
+    public static final String NAME = "Batalha Naval Android";
     public static final UUID MY_UUID = UUID
 	    .fromString("00001101-0000-1000-8000-00805F9B34FB");
 
