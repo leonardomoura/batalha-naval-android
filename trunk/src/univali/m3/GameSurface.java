@@ -29,14 +29,14 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 	float rawX = 0;
 	float mouseX = 0;
 	float mouseY = 0;
-	
+
 	int gridOffsetX = 23;
 	int gridOffsetY = 21;
 	int gridCellWidth = 45;
 	int gridCellHeight = 41;
-	
+
 	ArrayList<Point> ataque = new ArrayList<Point>();
-	
+
 	boolean isMyTurn;
 
 	// isso vai ser muito gambiarristico
@@ -45,7 +45,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 	Context c;
 
 	public ArrayList<BaseShip> myships = new ArrayList<BaseShip>();
-//	public BaseShip[] theirships = new BaseShip[3];
+	// public BaseShip[] theirships = new BaseShip[3];
 
 	public Bitmap grid;
 
@@ -68,11 +68,11 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 			myships.get(i).sprite = tmp;
 			myships.get(i).x = grid.getWidth();
 			myships.get(i).y = 10 + i * myships.get(i).sprite.getHeight();
-//			theirships[i] = new BoatShip();
-//			theirships[i].sprite = tmp;
-//			theirships[i].x = grid.getWidth();
-//			theirships[i].y = 10 + i * theirships[i].sprite.getHeight()
-//					+ grid.getHeight();
+			// theirships[i] = new BoatShip();
+			// theirships[i].sprite = tmp;
+			// theirships[i].x = grid.getWidth();
+			// theirships[i].y = 10 + i * theirships[i].sprite.getHeight()
+			// + grid.getHeight();
 		}
 
 		getHolder().addCallback(this);
@@ -116,8 +116,8 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 		p.setColor(Color.RED);
 		p.setStyle(Style.FILL_AND_STROKE);
 		canvas.drawColor(Color.BLACK);
-//		if (click)
-//			canvas.drawColor(Color.GREEN);
+		// if (click)
+		// canvas.drawColor(Color.GREEN);
 		// p = new Paint();
 		// p.setColor(Color.WHITE);
 		// p.setTextAlign(Align.LEFT);
@@ -130,16 +130,18 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 		canvas.drawBitmap(grid, 0, 0, null);
 		canvas.drawBitmap(grid, 0, grid.getHeight(), null);
 
-		if(selectedShip!=null){
-			canvas.drawRect(selectedShip.x, selectedShip.y, selectedShip.x+selectedShip.sprite.getWidth(), selectedShip.y+selectedShip.sprite.getHeight(), p);
+		if (selectedShip != null) {
+			canvas.drawRect(selectedShip.x, selectedShip.y, selectedShip.x
+					+ selectedShip.sprite.getWidth(), selectedShip.y
+					+ selectedShip.sprite.getHeight(), p);
 		}
-		
+
 		for (BaseShip s : myships) {
 			canvas.drawBitmap(s.sprite, s.x, s.y, null);
 		}
-//		for (BaseShip s : theirships) {
-//			canvas.drawBitmap(s.sprite, s.x, s.y, null);
-//		}
+		// for (BaseShip s : theirships) {
+		// canvas.drawBitmap(s.sprite, s.x, s.y, null);
+		// }
 
 	}
 
@@ -170,40 +172,47 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 			if (click && s.canSelect) {
 				selectedShip = s;
 				break;
-			}else{
-				click=false;
+			} else {
+				click = false;
 			}
 		}
-		//if not click and selectedShip!=null means player is eligible to select a position to put the ship
-		if(!click && selectedShip!=null){
-			if(e.getX()<grid.getWidth() && e.getY()<grid.getHeight()){
-				int tx=(int) (e.getX()-gridOffsetX)/gridCellWidth;
-				int ty=(int) (e.getY()-gridOffsetY)/gridCellHeight;
-			
-				System.out.println("tx "+tx+" ty "+ty);
-				
-				selectedShip.canSelect=false;
-				selectedShip.x = (tx*gridCellWidth)+gridOffsetX;
-				selectedShip.y = (ty*gridCellHeight)+gridOffsetY;
+		// if not click and selectedShip!=null means player is eligible to
+		// select a position to put the ship
+		if (!click && selectedShip != null) {
+			if (e.getX() < grid.getWidth() && e.getY() < grid.getHeight()) {
+				int tx = (int) (e.getX() - gridOffsetX) / gridCellWidth;
+				int ty = (int) (e.getY() - gridOffsetY) / gridCellHeight;
+
+				System.out.println("tx " + tx + " ty " + ty);
+
+				selectedShip.canSelect = false;
+				selectedShip.x = (tx * gridCellWidth) + gridOffsetX;
+				selectedShip.y = (ty * gridCellHeight) + gridOffsetY;
 				click = false;
-				
-				selectedShip=null;
+
+				selectedShip = null;
 			}
-		}else{
-			if(!click && selectedShip==null){
-				if(e.getY()>grid.getHeight()){
-					int ty = (int) (e.getY()-grid.getHeight());
+		} else {
+			
+			//lista de cliques para ataque
+			if (!click && selectedShip == null) {
+				if (e.getY() > grid.getHeight()) {
+					int ty = (int) (e.getY() - grid.getHeight() - gridOffsetY)
+							/ gridCellHeight;
+					int tx = (int) (e.getX() - gridOffsetX) / gridCellWidth;
+					
+//					ataque.add
 				}
 			}
 		}
-//		for (BaseShip s : theirships) {
-//			click = s.WasClicked((int) e.getX(), (int) e.getY());
-//			if (click) {
-//
-//				break;
-//			}
-//
-//		}
+		// for (BaseShip s : theirships) {
+		// click = s.WasClicked((int) e.getX(), (int) e.getY());
+		// if (click) {
+		//
+		// break;
+		// }
+		//
+		// }
 
 	}
 
